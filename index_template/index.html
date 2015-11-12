@@ -12,28 +12,37 @@
 
     <script type="text/jsx">
 
-        var MyComponent = React.createClass({
+        var Checkbox = React.createClass({
+
+            getInitialState: function () {
+                return {
+                    checked: true
+                }
+            },
+            handleCheck: function () {
+                this.setState({
+                    checked: !this.state.checked
+                })
+            },
             render: function(){
-                return <div>
-                           <h1>{this.props.text}</h1>
-                           <p>{this.props.children}</p>
-                       </div>
+                var msg;
+                if(this.state.checked)
+                {
+                    msg = "checked";
+                }
+                else
+                {
+                    msg = "unchecked";
+                }
+                return (<div>
+                           <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                            <p>This box is {msg}</p>
+
+                       </div>);
             }
         });
         React.render(
-                <div>
-                    <MyComponent text="HelloWorld">
-                            this is hw
-                    </MyComponent>
-                    <MyComponent text="How Are You">
-                            this is how are you
-                    </MyComponent>
-                    <MyComponent text="Goodbye!">
-                        this is goodbye
-                    </MyComponent>
-
-
-                </div>,
+                <Checkbox />,
                 document.getElementById("react-container")
         );
 
