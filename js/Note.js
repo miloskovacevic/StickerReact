@@ -2,8 +2,7 @@
 var Note = React.createClass({
     getInitialState: function(){
         return {
-           editing: false,
-           milos: "djubre - prvi slucaj"
+           editing: false
         }
     },
 
@@ -24,8 +23,7 @@ var Note = React.createClass({
 
     edit: function () {
         this.setState({
-            editing: true,
-            milos: "nije djubre - kliknuo na edit"
+            editing: true
         });
     },
     save: function(){
@@ -33,8 +31,7 @@ var Note = React.createClass({
         this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index);
 
         this.setState({
-            editing: false,
-            milos: "djubre - kliknuo na save"
+            editing: false
         });
     },
     remove: function () {
