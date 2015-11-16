@@ -15,6 +15,8 @@ var Note = React.createClass({
         });
     },
     save: function(){
+
+
         this.setState({
             editing: false
         });
