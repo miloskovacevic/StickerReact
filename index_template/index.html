@@ -3,50 +3,61 @@
     <head>
         <script src="https://fb.me/react-0.13.3.min.js"></script>
         <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+
         <title>My First React File</title>
     </head>
     <body>
-        <div id="react-container">
 
-        </div>
 
     <script type="text/jsx">
 
-        var Checkbox = React.createClass({
+            var Box = React.createClass({
 
-            getInitialState: function () {
-                return {
-                    checked: true
-                }
-            },
-            handleCheck: function () {
-                this.setState({
-                    checked: !this.state.checked
-                })
-            },
-            render: function(){
-                var msg;
-                if(this.state.checked)
-                {
-                    msg = "checked";
-                }
-                else
-                {
-                    msg = "unchecked";
-                }
-                return (<div>
-                           <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
-                            <p>This box is {msg}</p>
+                getDefaultProps: function () {
+                    return {
+                        colorIndex: -1
+                    }
+                },
 
-                       </div>);
-            }
-        });
+                getInitialState: function () {
+                    return {
+                        backgroundColor: "blue",
+                        height: 200,
+                        width: 200
+                    }
+                },
+
+                update: function () {
+                    this.setProps({
+                        colorIndex: this.props.colorIndex + 1
+                    });
+                },
+
+                componentWillReceiveProps: function (nextProps) {
+                    var color = this.props.colors.split(',')[nextProps.colorIndex];
+
+                    if(!color){
+                        this.setProps({colorIndex: 0})
+                    }
+                    this.setState({
+                        backgroundColor: color
+                    });
+
+                },
+
+                render: function(){
+                    return (
+                                <div style={this.state} onClick={this.update}>
+                                </div>
+                            );
+                }
+            });
         React.render(
-                <Checkbox />,
-                document.getElementById("react-container")
+                <Box colors="Red, DarkMagenta, Salmon, Chartreuse" />,
+                document.body
         );
 
-
+        
     </script>
     </body>
 </html>
