@@ -1,0 +1,24 @@
+{
+  "name": "StickerReact",
+  "version": "1.0.0",
+  "description": "A bulletin board developed in React",
+  "main": "Board.js",
+  "dependencies": {
+    "httpster": "^1.0.1",
+    "react-tools": "^0.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "open http://localhost:4321 & httpster -p 4321"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miloskovacevic/StickerReact.git"
+  },
+  "author": "Milos Kovacevic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miloskovacevic/StickerReact/issues"
+  },
+  "homepage": "https://github.com/miloskovacevic/StickerReact"
+}
